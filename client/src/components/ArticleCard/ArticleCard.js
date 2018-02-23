@@ -10,7 +10,7 @@ const ArticleCard = props => {
             href={props.url}>
             This is a link
           </a>]}>
-       <a href={props.url}><h4>{props.title}</h4></a>
+       <a href={props.url}><strong>{props.title}</strong></a>
         <p>{props.sub}</p>
       </Card>
       </div>

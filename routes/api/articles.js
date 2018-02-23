@@ -6,10 +6,8 @@ router.route("/")
   .get(articlesController.getAll)
 
 // Matches with "/api/books/:id"
-// router
-//   .route("/:id")
-//   .get(booksController.findById)
-//   .put(booksController.update)
-//   .delete(booksController.remove);
+router.route("/:query")
+  .get(articlesController.searchArticles)
+
 
 module.exports = router;

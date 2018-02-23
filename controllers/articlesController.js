@@ -23,6 +23,16 @@ module.exports = {
       .then(response => {
         res.json(response)
       });
+  },
+  searchArticles: (req, res)=>{
+    newsapi.v2.everything({
+      q: req.params.query,
+      sources: "wired",
+      from: "2018-02-23",
+      to: "2018-02-20"
+    }).then(response => {
+      res.json(response);
+    })
   }
 
 };

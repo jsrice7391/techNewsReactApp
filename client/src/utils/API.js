@@ -6,8 +6,8 @@ export default {
     return axios.get("/api/articles");
   },
   // Gets the book with the given id
-  articleSearch: function(id) {
-    return axios.get("/api/books/" + id);
+  searchArticles: function(query) {
+    return axios.get("/api/articles/" + query);
   },
   // Deletes the book with the given id
   saveArticles: function(id) {

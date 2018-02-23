@@ -44,10 +44,8 @@ class Article extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     if (this.state.topic) {
-      API.getArticles({
-        title: this.state.title,
-        author: this.state.author,
-        synopsis: this.state.synopsis
+      API.searchArticles ({
+        topic: this.state.topic,
       })
         .then(res => this.loadArticles())
         .catch(err => console.log(err));
@@ -57,13 +55,17 @@ class Article extends Component {
   render() {
     return <div>
         <Nav />
-        <div className="container">
-          <Row>
-            <Input placeholder="Search" name="topic" value={this.state.topic} onChange={this.handleInputChange} />
-          </Row>
-          <DatePicker selected={this.state.startDate} onChange={this.handleChange} />
-          <DatePicker selected={this.state.endDate} onChange={this.handleChange} />
 
+        <Row>
+          <Col s={4} m={3}>
+          <Input type="text" placeholder="Search" name="topic" value={this.state.topic} onChange={this.handleInputChange} />
+          </Col>
+          <Col s={4} m={3}>
+            <Input type="submit" placeholder="Search" onClick={this.handleFormSubmit} />
+            </Col>
+        </Row>
+
+        <div className="container">
           <Row>
             {this.state.articles.map(article => <div>
                 <Col s={4} m={3}>
