@@ -60,6 +60,7 @@ class Article extends Component {
     return <div>
         <Nav />
         <Row>
+          <Col s={2} m={3}></Col>
           <Col s={4} m={3}>
             <Input type="text" placeholder="Search" name="topic" value={this.state.topic} onChange={this.handleInputChange} />
           </Col>

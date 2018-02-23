@@ -1,0 +1,1 @@
+{"version":3,"sources":["utils/main.css"],"names":[],"mappings":"AAAA,QACI,qBAAwB","file":"static/css/main.b3b00ace.css","sourcesContent":[".navBar{\n    background-color: black;\n    \n}\n\n\n// WEBPACK FOOTER //\n// ./src/utils/main.css"],"sourceRoot":""}
