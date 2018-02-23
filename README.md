@@ -1,6 +1,9 @@
-# Create React Express App
+## Wired News App
 
-## About This Boilerplate
+This is a news applicastion thats takes articles and allows the user to save them to a Mongo Databse. IT uses the NewsAPI.org API to get the articles from many different media sources. Future development would have many of those sources, but as of 2.23.2018, this app just uses Wired. 
+
+
+## About This App
 
 This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
 
@@ -25,18 +28,4 @@ yarn start
 
 That's it, your app should be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
 
-## Deployment (Heroku)
 
-After confirming that you have an up to date git repository and a Heroku app created, complete the following:
-
-1. Build the React app for production by running the following command:
-
-```
-yarn build
-```
-
-2. Add and commit all changes to git
-
-3. Push to Heroku
-
-If all previous steps were followed correctly, your application should be deployed to Heroku!
