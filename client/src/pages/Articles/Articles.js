@@ -9,26 +9,26 @@ import {Row, Input} from "react-materialize";
 
 class Books extends Component {
   state = {
-    books: [],
+    articles: [],
     topic: "",
     searchYear: "",
     endYear: ""
   };
 
   componentDidMount() {
-    this.loadBooks();
+    this.loadArticles();
   }
 
-  loadBooks = () => {
-    API.getBooks()
+  loadArticles = () => {
+    API.getArticles()
       .then(res =>
-        this.setState({ books: res.data, title: "", author: "", synopsis: "" })
+        this.setState({ articles: res.data, title: "", startYear: "", endYear: "" })
       )
       .catch(err => console.log(err));
   };
 
-  deleteBook = id => {
-    API.deleteBook(id)
+  deleteArticle = id => {
+    API.deleteArticle(id)
       .then(res => this.loadBooks())
       .catch(err => console.log(err));
   };
@@ -42,8 +42,8 @@ class Books extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.title && this.state.author) {
-      API.saveBook({
+    if (this.state.topic) {
+      API.getArticles({
         title: this.state.title,
         author: this.state.author,
         synopsis: this.state.synopsis
