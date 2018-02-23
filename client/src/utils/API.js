@@ -1,20 +1,13 @@
 import axios from "axios";
 
 export default {
-  // Gets all books
-  getArticles: function() {
+  // Gets all 
+  getArticles: function(query) {
     return axios.get("/api/articles");
   },
   // Gets the book with the given id
   searchArticles: function(query) {
-    return axios.get("/api/articles/" + query);
-  },
-  // Deletes the book with the given id
-  saveArticles: function(id) {
-    return axios.delete("/api/books/" + id);
-  },
-  // Saves a book to the database
-  saveBook: function(bookData) {
-    return axios.post("/api/books", bookData);
+    return axios.get(`/api/articles/search/${query.query}`);
   }
+
 };

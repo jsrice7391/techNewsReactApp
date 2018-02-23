@@ -6,8 +6,8 @@ router.route("/")
   .get(articlesController.getAll)
 
 // Matches with "/api/books/:id"
-router.route("/:query")
-  .get(articlesController.searchArticles)
+router.route("/search/:query")
+.get(articlesController.searchArticles);
 
 
 module.exports = router;

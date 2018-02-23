@@ -7,11 +7,12 @@ import {Row, Input, Col,} from "react-materialize";
 import ArticleCard from "../../components/ArticleCard"
 import DatePicker from "react-datepicker";
 
+
 class Article extends Component {
   state = {
     articles: [],
     topic: "",
-    searchYear: "",
+    searchDate: "",
     endYear: ""
   };
 
@@ -44,10 +45,13 @@ class Article extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     if (this.state.topic) {
-      API.searchArticles ({
-        topic: this.state.topic,
+      API.searchArticles({
+        query:this.state.topic
       })
-        .then(res => this.loadArticles())
+        .then(res => {
+          console.log(res.data.articles)
+          this.setState({articles: res.data.articles})
+        })
         .catch(err => console.log(err));
     }
   };
@@ -55,24 +59,25 @@ class Article extends Component {
   render() {
     return <div>
         <Nav />
-
         <Row>
           <Col s={4} m={3}>
-          <Input type="text" placeholder="Search" name="topic" value={this.state.topic} onChange={this.handleInputChange} />
+            <Input type="text" placeholder="Search" name="topic" value={this.state.topic} onChange={this.handleInputChange} />
           </Col>
           <Col s={4} m={3}>
             <Input type="submit" placeholder="Search" onClick={this.handleFormSubmit} />
-            </Col>
+          </Col>
         </Row>
 
+
+
         <div className="container">
-          <Row>
-            {this.state.articles.map(article => <div>
-                <Col s={4} m={3}>
-                  <ArticleCard image={article.urlToImage} title={article.title} url={article.url} sub={article.description} />
-                </Col>
-              </div>)}
-          </Row>
+          {this.state.articles.length ? <Row>
+              {this.state.articles.map(article => <div>
+                  <Col s={4} m={3}>
+                    <ArticleCard image={article.urlToImage} title={article.title} url={article.url} sub={article.description} />
+                  </Col>
+                </div>)}
+            </Row> : <h1>No Results Found</h1>}
         </div>
       </div>;
   }
