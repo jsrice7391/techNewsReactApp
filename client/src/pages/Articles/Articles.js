@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import {Nav} from "../../components/Nav";
-import {Col} from "react-materialize"
 import {Form} from "../../components/Form"
-import {Row, Input} from "react-materialize";
+import {Row, Input, Col,} from "react-materialize";
+import ArticleCard from "../../components/ArticleCard"
+import DatePicker from "react-datepicker";
 
-
-class Books extends Component {
+class Article extends Component {
   state = {
     articles: [],
     topic: "",
@@ -23,15 +23,14 @@ class Books extends Component {
     API.getArticles()
       .then(res =>{
         console.log(res.data.articles)
-        this.setState({ articles: res.data.articles, topic: "", startYear: "", endYear: "" })
-     
+        this.setState({ articles: res.data.articles, topic: "", startYear: "", endYear: "" }) 
       })
       .catch(err => console.log(err));
   };
 
   deleteArticle = id => {
     API.deleteArticle(id)
-      .then(res => this.loadBooks())
+      .then(res => this.loadArticles())
       .catch(err => console.log(err));
   };
 
@@ -50,7 +49,7 @@ class Books extends Component {
         author: this.state.author,
         synopsis: this.state.synopsis
       })
-        .then(res => this.loadBooks())
+        .then(res => this.loadArticles())
         .catch(err => console.log(err));
     }
   };
@@ -58,31 +57,25 @@ class Books extends Component {
   render() {
     return <div>
         <Nav />
-        <Row>
-          <Input placeholder="Search" name="topic" value={this.state.topic} onChange={this.handleInputChange} />
-        </Row>
-        <Row>
-          <Input placeholder="Year" name="searchYear" value={this.state.searchYear} onChange={this.handleInputChange} />
-        </Row>
-        <Row>
-          <Input placeholder="End Year" name="endYear" value={this.state.endYear} onChange={this.handleInputChange} />
-        </Row>
+        <div className="container">
+          <Row>
+            <Input placeholder="Search" name="topic" value={this.state.topic} onChange={this.handleInputChange} />
+          </Row>
+          <DatePicker selected={this.state.startDate} onChange={this.handleChange} />
+          <DatePicker selected={this.state.endDate} onChange={this.handleChange} />
 
-        <div>
-          {this.state.articles.length ? <div>
-              {this.state.articles.map(article => 
-              <div>
-                  <a href={article.url}><p>{article.title}</p></a>
-                </div>
-              )}
-            </div> : <h1>No Articles found</h1>}
+          <Row>
+            {this.state.articles.map(article => <div>
+                <Col s={4} m={3}>
+                  <ArticleCard image={article.urlToImage} title={article.title} url={article.url} sub={article.description} />
+                </Col>
+              </div>)}
+          </Row>
         </div>
       </div>;
   }
 
-
-
-
 }
 
-export default Books;
+
+export default Article;
