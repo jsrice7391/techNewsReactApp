@@ -18,8 +18,11 @@ const getAll = () => {
 // Defining methods for the booksController
 module.exports = {
   getAll: (req, res) => {
-    getAll()
-    res.send("Articles found")
+    newsapi.v2
+      .topHeadlines({ sources: "wired" })
+      .then(response => {
+        res.json(response)
+      });
   }
 
 };

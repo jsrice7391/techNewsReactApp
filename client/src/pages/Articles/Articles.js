@@ -21,9 +21,11 @@ class Books extends Component {
 
   loadArticles = () => {
     API.getArticles()
-      .then(res =>
-        this.setState({ articles: res.data, title: "", startYear: "", endYear: "" })
-      )
+      .then(res =>{
+        console.log(res.data.articles)
+        this.setState({ articles: res.data.articles, topic: "", startYear: "", endYear: "" })
+     
+      })
       .catch(err => console.log(err));
   };
 
@@ -65,6 +67,10 @@ class Books extends Component {
         <Row>
           <Input placeholder="End Year" name="endYear" value={this.state.endYear} onChange={this.handleInputChange} />
         </Row>
+
+        {this.state.articles.map(article => {
+         console.log(article.title)
+        })}
       </div>;
   }
 
