@@ -68,9 +68,15 @@ class Books extends Component {
           <Input placeholder="End Year" name="endYear" value={this.state.endYear} onChange={this.handleInputChange} />
         </Row>
 
-        {this.state.articles.map(article => {
-         console.log(article.title)
-        })}
+        <div>
+          {this.state.articles.length ? <div>
+              {this.state.articles.map(article => 
+              <div>
+                  <a href={article.url}><p>{article.title}</p></a>
+                </div>
+              )}
+            </div> : <h1>No Articles found</h1>}
+        </div>
       </div>;
   }
 
