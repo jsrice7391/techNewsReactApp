@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import {Row, Col, Container} from "react-materialize"
+import {Row, Col, Container, Parallax} from "react-materialize"
 import API from "../../utils/API";
 import { Nav } from "../../components/Nav";
 
@@ -18,18 +18,24 @@ class Detail extends Component {
   }
 
   render() {
-    return (
-
-      <div>
-        <Nav/>
-      {this.state.articles.map(article => (
-        <h1>{article.title}</h1>
-      ))}
-      </div>
-
-
-
-    );
+    return <div>
+        <Nav />
+        <Container>
+          {this.state.articles.map(article => <div>
+              <Parallax imageSrc={article.urlToImage} />
+              <div className="section white">
+                <div className="row container">
+                 <a href={article.url}><h3 className="header">
+                  {article.title}
+                  </h3></a>
+                  <p className="grey-text text-darken-3 lighten-3">
+                    {article.description}
+                  </p>
+                </div>
+              </div>
+            </div>)}
+        </Container>
+      </div>;
   }
 }
 
