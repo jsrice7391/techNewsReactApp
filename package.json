@@ -9,13 +9,14 @@
     "start": "concurrently \"nodemon server.js\" \"npm run client\"",
     "build": "node scripts/build.js",
     "seed": "node scripts/seedDB.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "installDeps": "yarn && cd client && yarn"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^3.5.1",
+    "jest": "^22.4.2",
     "nodemon": "^1.11.0"
   },
   "dependencies": {

@@ -3,7 +3,7 @@ import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import {Nav} from "../../components/Nav";
 import {Form} from "../../components/Form"
-import {Row, Input, Col,} from "react-materialize";
+import {Row, Input, Col, Button, Icon} from "react-materialize";
 import ArticleCard from "../../components/ArticleCard"
 import DatePicker from "react-datepicker";
 
@@ -35,6 +35,8 @@ class Article extends Component {
       .catch(err => console.log(err));
   };
 
+
+
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -64,22 +66,18 @@ class Article extends Component {
           <Col s={4} m={3}>
             <Input type="text" placeholder="Search" name="topic" value={this.state.topic} onChange={this.handleInputChange} />
           </Col>
-          <Col s={4} m={3}>
-           
-          </Col>
+          <Col s={4} m={3} />
           <Col s={4} m={3}>
             <Input type="submit" placeholder="Search" onClick={this.handleFormSubmit} />
           </Col>
         </Row>
 
         <div className="container">
-          {this.state.articles.length ? <Row>
-              {this.state.articles.map(article => <div>
-                  <Col s={4} m={3}>
-                    <ArticleCard image={article.urlToImage} title={article.title} url={article.url} sub={article.description} />
-                  </Col>
-                </div>)}
-            </Row> : <h1>No Results Found</h1>}
+  {this.state.articles.length ? (
+  <ArticleCard results={this.state.articles}/>
+
+
+  ) : <h1>No Results Found</h1>}
         </div>
       </div>;
   }

@@ -10,4 +10,5 @@ router.route("/search/:query")
 .get(articlesController.searchArticles);
 
 
+
 module.exports = router;
