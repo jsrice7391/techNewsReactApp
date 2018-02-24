@@ -26,6 +26,11 @@ module.exports = {
     }).then(response => {
       res.json(response);
     })
+  },
+  saveArticle: (req,res) => {
+    db.Article.create(req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   }
 
 };

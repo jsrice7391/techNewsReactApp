@@ -3,7 +3,7 @@ import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import {Nav} from "../../components/Nav";
 import {Form} from "../../components/Form"
-import {Row, Input, Col, Button, Icon} from "react-materialize";
+import {Row, Input, Col, Button, Icon, Card, CardTitle} from "react-materialize";
 import ArticleCard from "../../components/ArticleCard"
 import DatePicker from "react-datepicker";
 
@@ -44,6 +44,17 @@ class Article extends Component {
     });
   };
 
+  saveTheArticle = article => {
+    API.saveTheArticle(article)
+    .then(res => {
+      console.log("Saved the article")
+    }).catch(err  => {
+      console.log(err);
+    })
+
+
+  }
+
   handleFormSubmit = event => {
     event.preventDefault();
     if (this.state.topic) {
@@ -73,11 +84,34 @@ class Article extends Component {
         </Row>
 
         <div className="container">
-  {this.state.articles.length ? (
-  <ArticleCard results={this.state.articles}/>
+          {this.state.articles.length ? (
+            // <ArticleCard results={this.state.articles}/>
+            <Row>
+              {this.state.articles.map(article => <Col s={12} m={6}>
+                  <Card className="small" header={<CardTitle
+                        image={article.urlToImage}
+                      >
+                        {article.title}
+                      </CardTitle>} actions={[
+                      
+                      <a href={article.url}>
+                        Read the Article
+                      </a>,
 
+                      <Button waves='light' onClick={() => this.saveTheArticle(article)}>button<Icon left>cloud</Icon></Button>
 
-  ) : <h1>No Results Found</h1>}
+                
+                    
+                    
+                    
+                    ]}>
+                    <a href={article.url}>
+                      <strong>{article.title}</strong>
+                    </a>
+                  </Card>
+                </Col>)}
+            </Row> 
+          ): <h1>No Results Found</h1>}
         </div>
       </div>;
   }
