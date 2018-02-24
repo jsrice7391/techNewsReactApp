@@ -3,10 +3,6 @@ const NewsAPI = require("newsapi");
 const newsapi = new NewsAPI("8a750ca755344167bc568d29cfe2653d");
 const request = require("request");
 
-
-
-
-
 // Defining methods for the booksController
 module.exports = {
   // Gets all of the mos trecent artifcles. I will do this On the load of the document
@@ -17,6 +13,7 @@ module.exports = {
         res.json(response)
       });
   },
+  // Allos the user to search for the articles
   searchArticles: (req, res)=>{
     newsapi.v2.everything({
       q: req.params.query,
@@ -27,10 +24,15 @@ module.exports = {
       res.json(response);
     })
   },
+  // Save the artcle to the Database
   saveArticle: (req,res) => {
     db.Article.create(req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+
+  getSaved: (req,res) => {
+    db.Article.find({}).then(results => res.json(results)).catch(err => res.status(422).json(err))
   }
 
 };

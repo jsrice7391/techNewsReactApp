@@ -9,11 +9,15 @@ export default {
   searchArticles: (query)  => {
     return axios.get(`/api/articles/search/${query.query}`);
   },
+  // Will allos the user to see the saved articles
   getArticle: (article) => {
-    return axios.get(`/api/articles/${article.title}`)
+    return axios.get(`/api/savedArticles/`)
   },
   saveTheArticle: article => {
     return axios.post("/api/articles" , article)
+  },
+  getSaved: () => {
+    return axios.get("/api/savedArticles/saved")
   }
 
 };

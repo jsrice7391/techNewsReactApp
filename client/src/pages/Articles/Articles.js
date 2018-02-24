@@ -51,9 +51,7 @@ class Article extends Component {
     }).catch(err  => {
       console.log(err);
     })
-
-
-  }
+  };
 
   handleFormSubmit = event => {
     event.preventDefault();
@@ -88,22 +86,10 @@ class Article extends Component {
             // <ArticleCard results={this.state.articles}/>
             <Row>
               {this.state.articles.map(article => <Col s={12} m={6}>
-                  <Card className="small" header={<CardTitle
-                        image={article.urlToImage}
-                      >
+                  <Card className="small" header={<CardTitle image={article.urlToImage}>
                         {article.title}
-                      </CardTitle>} actions={[
-                      
-                      <a href={article.url}>
-                        Read the Article
-                      </a>,
-
-                      <Button waves='light' onClick={() => this.saveTheArticle(article)}>button<Icon left>cloud</Icon></Button>
-
-                
-                    
-                    
-                    
+                      </CardTitle>} actions={[       
+                      <Button waves='light' onClick={() => this.saveTheArticle(article)}>Save<Icon left>save</Icon></Button>   
                     ]}>
                     <a href={article.url}>
                       <strong>{article.title}</strong>

@@ -4,7 +4,7 @@ import "../../utils/main.css"
 
 export const Nav = props => 
 <Navbar className="navBar" brand="Wired Web Scraper" right>
-    <NavItem href="get-started.html">Getting started</NavItem>
+    <NavItem href="/articles/saved">Getting started</NavItem>
     <NavItem href="components.html">Components</NavItem>
   </Navbar>
 

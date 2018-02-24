@@ -10,6 +10,8 @@ router.route("/")
 router.route("/search/:query")
 .get(articlesController.searchArticles);
 
+router.route("/saved")
+.get(articlesController.getSaved)
 
 
 module.exports = router;
