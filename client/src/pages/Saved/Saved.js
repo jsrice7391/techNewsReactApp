@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import {Row, Col, Container} from "react-materialize"
 import API from "../../utils/API";
+import { Nav } from "../../components/Nav";
 
 class Detail extends Component {
   state = {
@@ -18,7 +19,9 @@ class Detail extends Component {
 
   render() {
     return (
+
       <div>
+        <Nav/>
       {this.state.articles.map(article => (
         <h1>{article.title}</h1>
       ))}
