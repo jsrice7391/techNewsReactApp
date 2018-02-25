@@ -31,6 +31,7 @@ class Detail extends Component {
                   <p className="grey-text text-darken-3 lighten-3">
                     {article.description}
                   </p>
+                  <em>{article.author}</em>
                 </div>
               </div>
             </div>)}

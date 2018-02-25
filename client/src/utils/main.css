@@ -1,3 +1,19 @@
 .navBar{
     background-color: black;   
 }
+
+.saverButton {
+    background-color: black;
+    font-size: 12px;
+    margin: -20px;
+}
+
+.cardBox {
+    height: 700px;
+}
+
+.articleHeadline {
+text-shadow: 1px 1px 1px #000;
+
+
+}

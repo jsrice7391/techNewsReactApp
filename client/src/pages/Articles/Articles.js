@@ -3,9 +3,10 @@ import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import {Nav} from "../../components/Nav";
 import {Form} from "../../components/Form"
-import {Row, Input, Col, Button, Icon, Card, CardTitle} from "react-materialize";
+import {Row, Input, Col, Button, Icon, Card, CardTitle, Modal } from "react-materialize";
 import ArticleCard from "../../components/ArticleCard"
 import DatePicker from "react-datepicker";
+import "../../utils/main.css";
 
 
 class Article extends Component {
@@ -82,22 +83,20 @@ class Article extends Component {
         </Row>
 
         <div className="container">
-          {this.state.articles.length ? (
-            // <ArticleCard results={this.state.articles}/>
+          {this.state.articles.length ? // <ArticleCard results={this.state.articles}/>
             <Row>
               {this.state.articles.map(article => <Col s={12} m={6}>
                   <Card className="small" header={<CardTitle image={article.urlToImage}>
-                        {article.title}
-                      </CardTitle>} actions={[       
-                      <Button waves='light' onClick={() => this.saveTheArticle(article)}>Save<Icon left>save</Icon></Button>   
-                    ]}>
+                      <div class="articleHeadline">{article.title}</div>
+                      </CardTitle>} actions={[<Button className="saverButton" waves="light" onClick={() => this.saveTheArticle(article)}>
+                        Save<Icon left>save</Icon>
+                      </Button>]}>
                     <a href={article.url}>
                       <strong>{article.title}</strong>
                     </a>
                   </Card>
                 </Col>)}
-            </Row> 
-          ): <h1>No Results Found</h1>}
+            </Row> : <h1>No Results Found</h1>}
         </div>
       </div>;
   }

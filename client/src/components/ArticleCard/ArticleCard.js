@@ -12,10 +12,12 @@ const ArticleCard = props => {
              <Card className="small" header={<CardTitle image={article.urlToImage}>
                    {article.title}
                  </CardTitle>} actions={[<a href="#">Read the Article</a>]}>
+                 <div class="cardBox">
                <a href={article.url}>
                  <strong>{article.title}</strong>
                </a>
                <p>{props.sub}</p>
+               </div>
              </Card>
            </Col>))}
            </Row>

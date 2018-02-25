@@ -32,7 +32,7 @@ module.exports = {
   },
 
   getSaved: (req,res) => {
-    db.Article.find({}).then(results => res.json(results)).catch(err => res.status(422).json(err))
+    db.Article.find({}).sort({createdAt: -1}).then(results => res.json(results)).catch(err => res.status(422).json(err))
   }
 
 };
