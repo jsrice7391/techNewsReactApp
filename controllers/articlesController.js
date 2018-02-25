@@ -15,9 +15,10 @@ module.exports = {
   },
   // Allos the user to search for the articles
   searchArticles: (req, res)=>{
+    console.log(req.query);
     newsapi.v2.everything({
-      q: req.params.query,
-      sources: "wired",
+      q: req.query.query,
+      source: req.query.source,
       from: "2018-02-23",
       to: "2018-02-01"
     }).then(response => {

@@ -58,10 +58,12 @@ class Article extends Component {
     event.preventDefault();
     if (this.state.topic) {
       API.searchArticles({
-        query:this.state.topic
+        query:this.state.topic,
+        source: "vice-news",
+        startDate: "today",
+        endDate: "tomorrow"
       })
         .then(res => {
-          console.log(res.data.articles)
           this.setState({articles: res.data.articles})
         })
         .catch(err => console.log(err));
@@ -83,7 +85,9 @@ class Article extends Component {
         </Row>
 
         <div className="container">
-          {this.state.articles.length ? // <ArticleCard results={this.state.articles}/>
+          {this.state.articles ? (
+
+      
             <Row>
               {this.state.articles.map(article => <Col s={12} m={6}>
                   <Card className="small" header={<CardTitle image={article.urlToImage}>
@@ -98,7 +102,8 @@ class Article extends Component {
 
                   </Card>
                 </Col>)}
-            </Row> : <h1>No Results Found</h1>}
+            </Row> 
+          ) : <h1>No Results Found</h1>}
         </div>
       </div>;
   }

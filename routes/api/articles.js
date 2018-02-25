@@ -7,7 +7,7 @@ router.route("/")
   .post(articlesController.saveArticle)
 
 // Matches with "/api/books/:id"
-router.route("/search/:query")
+router.route("/search/")
 .get(articlesController.searchArticles);
 
 router.route("/saved")

@@ -7,7 +7,15 @@ export default {
   },
   // Gets the book with the given id
   searchArticles: (query)  => {
-    return axios.get(`/api/articles/search/${query.query}`);
+    console.log(query)
+    return axios.get(`/api/articles/search/`, {
+      params: {
+        query: query.query,
+        source: query.source,
+        startDate: query.startDate,
+        endDate: query.endDate
+      }
+    });
   },
   // Will allos the user to see the saved articles
   getArticle: (article) => {
