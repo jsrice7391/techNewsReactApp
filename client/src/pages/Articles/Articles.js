@@ -5,16 +5,19 @@ import {Nav} from "../../components/Nav";
 import {Form} from "../../components/Form"
 import {Row, Input, Col, Button, Icon, Card, CardTitle, Modal } from "react-materialize";
 import ArticleCard from "../../components/ArticleCard"
-import DatePicker from "react-datepicker";
 import "../../utils/main.css";
+import DayPickerInput from "react-day-picker/DayPickerInput";
+import "react-day-picker/lib/style.css";
+import {moment} from "moment";
+
 
 
 class Article extends Component {
   state = {
     articles: [],
     topic: "",
-    searchDate: "",
-    endYear: ""
+    startDate: "",
+    endDate: ""
   };
 
   componentDidMount() {
@@ -55,16 +58,20 @@ class Article extends Component {
   };
 
   handleFormSubmit = event => {
-    event.preventDefault();
+
     if (this.state.topic) {
       API.searchArticles({
         query:this.state.topic,
-        source: "vice-news",
-        startDate: this.state.searchDate,
+        source: "techcrunch",
+        startDate: this.state.startDate,
         endDate: this.state.endDate
       })
         .then(res => {
-          this.setState({articles: res.data.articles})
+          this.setState({
+            articles: res.data.articles,
+            startDate: "",
+            endDate:""
+          })
         })
         .catch(err => console.log(err));
     }
@@ -73,21 +80,25 @@ class Article extends Component {
   render() {
     return <div>
         <Nav />
-        <Row>
-          <Col s={2} m={3} />
-          <Col s={4} m={3}>
-            <Input type="text" placeholder="Search" name="topic" value={this.state.topic} onChange={this.handleInputChange} />
-          </Col>
-          <Col s={4} m={3} />
-          <Col s={4} m={3} />
-        </Row>
         <div>
           <Modal header="Modal Header" fixedFooter trigger={<Button>
                 MODAL
               </Button>}>
             <Input type="text" placeholder="Search" name="topic" value={this.state.topic} onChange={this.handleInputChange} />
-            <Input type="date" placeholder="Start Date" className="datepicker" data-value={this.state.searchDate} />
-            <Input type="date" placeholder="End Date" className="datepicker" data-value={this.state.endDate} />
+            <p>Please pick the Start Date for your Search:</p>
+            <DayPickerInput onDayChange={day => {
+               
+                let convertedDay = moment(day).format("YYYY-MM-DDD");
+                this.setState({ starthDate: convertedDay });
+              }} />
+            <p>Please pick the Start Date for your Search:</p>
+            <DayPickerInput onDayChange={day => {
+              let convertedDay = moment(day).format("YYYY-MM-DDD")
+
+                this.setState({ endDate: convertedDay });
+                console.log(`The current state of the date is: ${this.state.startDate}`)
+              }} />
+
             <Input type="submit" placeholder="Submit" onClick={this.handleFormSubmit} />
           </Modal>
         </div>;

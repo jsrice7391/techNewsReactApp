@@ -18,7 +18,9 @@ module.exports = {
     console.log(req.query);
     newsapi.v2.everything({
       q: req.query.query,
-      source: req.query.source,
+      sources: req.query.source,
+      language: "en",
+      domain: "technology",
       from: "2018-02-23",
       to: "2018-02-01"
     }).then(response => {
