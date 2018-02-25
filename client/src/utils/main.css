@@ -12,8 +12,14 @@
     height: 700px;
 }
 
-.articleHeadline {
-text-shadow: 1px 1px 1px #000;
+.articleHeadline  a {
+    text-shadow: 1px 1px 1px #000;
+    text-decoration: none;
+    color: white;   
+}
 
+.articleHeadline a {
+    text-decoration: none;
 
 }
+

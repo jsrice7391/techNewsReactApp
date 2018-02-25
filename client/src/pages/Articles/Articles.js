@@ -87,13 +87,15 @@ class Article extends Component {
             <Row>
               {this.state.articles.map(article => <Col s={12} m={6}>
                   <Card className="small" header={<CardTitle image={article.urlToImage}>
-                      <div class="articleHeadline">{article.title}</div>
+                      <div class="articleHeadline">
+                        <a href={article.url}>{article.title}</a>
+                        </div>
                       </CardTitle>} actions={[<Button className="saverButton" waves="light" onClick={() => this.saveTheArticle(article)}>
                         Save<Icon left>save</Icon>
                       </Button>]}>
-                    <a href={article.url}>
-                      <strong>{article.title}</strong>
-                    </a>
+  
+                      <strong>{article.description}</strong>
+
                   </Card>
                 </Col>)}
             </Row> : <h1>No Results Found</h1>}
