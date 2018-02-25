@@ -60,8 +60,8 @@ class Article extends Component {
       API.searchArticles({
         query:this.state.topic,
         source: "vice-news",
-        startDate: "today",
-        endDate: "tomorrow"
+        startDate: this.state.searchDate,
+        endDate: this.state.endDate
       })
         .then(res => {
           this.setState({articles: res.data.articles})
@@ -79,31 +79,32 @@ class Article extends Component {
             <Input type="text" placeholder="Search" name="topic" value={this.state.topic} onChange={this.handleInputChange} />
           </Col>
           <Col s={4} m={3} />
-          <Col s={4} m={3}>
-            <Input type="submit" placeholder="Search" onClick={this.handleFormSubmit} />
-          </Col>
+          <Col s={4} m={3} />
         </Row>
-
+        <div>
+          <Modal header="Modal Header" fixedFooter trigger={<Button>
+                MODAL
+              </Button>}>
+            <Input type="text" placeholder="Search" name="topic" value={this.state.topic} onChange={this.handleInputChange} />
+            <Input type="date" placeholder="Start Date" className="datepicker" data-value={this.state.searchDate} />
+            <Input type="date" placeholder="End Date" className="datepicker" data-value={this.state.endDate} />
+            <Input type="submit" placeholder="Submit" onClick={this.handleFormSubmit} />
+          </Modal>
+        </div>;
         <div className="container">
-          {this.state.articles ? (
-
-      
-            <Row>
+          {this.state.articles ? <Row>
               {this.state.articles.map(article => <Col s={12} m={6}>
                   <Card className="small" header={<CardTitle image={article.urlToImage}>
-                      <div class="articleHeadline">
-                        <a href={article.url}>{article.title}</a>
+                        <div class="articleHeadline">
+                          <a href={article.url}>{article.title}</a>
                         </div>
                       </CardTitle>} actions={[<Button className="saverButton" waves="light" onClick={() => this.saveTheArticle(article)}>
                         Save<Icon left>save</Icon>
                       </Button>]}>
-  
-                      <strong>{article.description}</strong>
-
+                    <strong>{article.description}</strong>
                   </Card>
                 </Col>)}
-            </Row> 
-          ) : <h1>No Results Found</h1>}
+            </Row> : <h1>No Results Found</h1>}
         </div>
       </div>;
   }
