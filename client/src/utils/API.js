@@ -13,7 +13,7 @@ export default {
         query: query.query,
         source: query.source,
         startDate: query.startDate,
-        endDate: query.endDate
+        endDate: query.endDate,
       }
     });
   },

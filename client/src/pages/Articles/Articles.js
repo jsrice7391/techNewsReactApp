@@ -18,7 +18,8 @@ class Article extends Component {
     articles: [],
     topic: "",
     startDate: "",
-    endDate: ""
+    endDate: new Date(),
+    source: "wired"
   };
 
   componentDidMount() {
@@ -63,7 +64,7 @@ class Article extends Component {
     if (this.state.topic) {
       API.searchArticles({
         query:this.state.topic,
-        source: "techcrunch",
+        source: this.state.source,
         startDate: this.state.startDate,
         endDate: this.state.endDate
       })
@@ -89,6 +90,13 @@ class Article extends Component {
                 </div>
               </Row>}>
             <Input type="text" placeholder="Search" name="topic" value={this.state.topic} onChange={this.handleInputChange} />
+
+            <Input s={12} type="select" value={this.state.source} onChange={this.handleInputChange} label="Select A Source" icon="local_library" defaultValue="Wired">
+              <option value="1">Option 1</option>
+              <option value="2">Option 2</option>
+              <option value="3">Option 3</option>
+            </Input>
+
             <p>Please pick the Start Date for your Search:</p>
             <DayPickerInput onDayChange={day => {
                 const formatEnd = formatDate(day, "YYYY-MM-DD");
