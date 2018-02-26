@@ -114,7 +114,7 @@ class Article extends Component {
         <div className="container">
           {this.state.articles ? <Row>
               {this.state.articles.map(article => <Col s={12} m={6}>
-                  <Card className="small" header={<CardTitle image={article.urlToImage}>
+                  <Card className="large" header={<CardTitle image={article.urlToImage}>
                         <div class="articleHeadline">
                           <a href={article.url}>{article.title}</a>
                         </div>
