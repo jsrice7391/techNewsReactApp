@@ -91,10 +91,10 @@ class Article extends Component {
               </Row>}>
             <Input type="text" placeholder="Search" name="topic" value={this.state.topic} onChange={this.handleInputChange} />
 
-            <Input s={12} type="select" value={this.state.source} onChange={this.handleInputChange} label="Select A Source" icon="local_library" defaultValue="Wired">
-              <option value="1">Option 1</option>
-              <option value="2">Option 2</option>
-              <option value="3">Option 3</option>
+            <Input s={12} type="select" name="source" value={this.state.source} onChange={this.handleInputChange} label="Select A Source" icon="local_library" defaultValue="Wired">
+              <option value="wired">Wired</option>
+              <option value="techcrunch">Tech Crunch</option>
+              <option value="bloomberg">Bloomberg</option>
             </Input>
 
             <p>Please pick the Start Date for your Search:</p>
