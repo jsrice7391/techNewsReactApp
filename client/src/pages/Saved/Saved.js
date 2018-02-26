@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import {Row, Col, Container, Parallax} from "react-materialize"
+import {Container, Parallax} from "react-materialize"
 import API from "../../utils/API";
 import { Nav } from "../../components/Nav";
 

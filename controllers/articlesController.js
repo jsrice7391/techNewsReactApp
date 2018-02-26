@@ -5,7 +5,7 @@ const request = require("request");
 
 // Defining methods for the booksController
 module.exports = {
-  // Gets all of the mos trecent artifcles. I will do this On the load of the document
+  // Gets all of the most recent articles. I will do this On the load of the document
   getAll: (req, res) => {
     newsapi.v2
       .topHeadlines({ sources: "wired" })
@@ -17,12 +17,11 @@ module.exports = {
   searchArticles: (req, res)=>{
     console.log(req.query);
     newsapi.v2.everything({
-      q: req.query.query,
-      sources: req.query.source,
-      language: "en",
-      domain: "technology",
-      from: req.query.startDate,
-      to: req.query.endDate
+      q: req.query.query,   //Set the query to the user query
+      sources: req.query.source,  //Set the source from the form to the source for the search
+      language: "en", //ALl results will come back in english
+      from: req.query.startDate, //The range of the article beginning 
+      to: req.query.endDate //The range of the article ending
     }).then(response => {
       res.json(response);
     })

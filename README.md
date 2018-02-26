@@ -1,6 +1,15 @@
-## Wired News App
+<h1>Tech News React App</h1>
 
-This is a news applicastion thats takes articles and allows the user to save them to a Mongo Databse. IT uses the NewsAPI.org API to get the articles from many different media sources. Future development would have many of those sources, but as of 2.23.2018, this app just uses Wired. 
+This is a news application thats takes articles and allows the user to save them to a Mongo Database for later reading. It uses the NewsAPI.org API to get the articles from the users selected media sources.
+
+<h2>Technologies used in this application</h2>
+<ul>
+    <li>React Materialize: https://react-materialize.github.io/#/</li>
+    <li>NewAPI.org: https://newsapi.org/</li>
+    <li>React Day Picker: http://react-day-picker.js.org/</li>
+    <li>Mongoose: http://mongoosejs.com/docs/index.html</li>
+    <li>Express Router:  https://expressjs.com/en/guide/routing.html </li>
+</ul>
 
 
 ## About This App
