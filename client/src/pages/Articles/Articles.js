@@ -1,17 +1,11 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
-import { Link } from "react-router-dom";
 import {Nav} from "../../components/Nav";
-import {Form} from "../../components/Form"
 import {Row, Input, Col, Button, Icon, Card, CardTitle, Modal } from "react-materialize";
-import ArticleCard from "../../components/ArticleCard"
 import "../../utils/main.css";
 import DayPickerInput from "react-day-picker/DayPickerInput";
 import "react-day-picker/lib/style.css";
-import MomentLocaleUtils, {formatDate,parseDate} from "react-day-picker/moment";
-import {moment} from "moment";
-import $ from "jquery";
-
+import {formatDate,parseDate} from "react-day-picker/moment";
 
 
 class Article extends Component {
