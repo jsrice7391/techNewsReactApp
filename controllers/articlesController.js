@@ -21,8 +21,8 @@ module.exports = {
       sources: req.query.source,
       language: "en",
       domain: "technology",
-      from: "2018-02-23",
-      to: "2018-02-01"
+      from: req.query.startDate,
+      to: req.query.endDate
     }).then(response => {
       res.json(response);
     })

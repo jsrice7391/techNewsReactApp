@@ -8,6 +8,7 @@ import ArticleCard from "../../components/ArticleCard"
 import "../../utils/main.css";
 import DayPickerInput from "react-day-picker/DayPickerInput";
 import "react-day-picker/lib/style.css";
+import MomentLocaleUtils, {formatDate,parseDate} from "react-day-picker/moment";
 import {moment} from "moment";
 
 
@@ -87,16 +88,14 @@ class Article extends Component {
             <Input type="text" placeholder="Search" name="topic" value={this.state.topic} onChange={this.handleInputChange} />
             <p>Please pick the Start Date for your Search:</p>
             <DayPickerInput onDayChange={day => {
-               
-                let convertedDay = moment(day).format("YYYY-MM-DDD");
-                this.setState({ starthDate: convertedDay });
+                    const formatEnd = formatDate(day, "YYYY-MM-DD");
+                     this.setState({ startDate: formatEnd });  
+              
               }} />
             <p>Please pick the Start Date for your Search:</p>
-            <DayPickerInput onDayChange={day => {
-              let convertedDay = moment(day).format("YYYY-MM-DDD")
-
-                this.setState({ endDate: convertedDay });
-                console.log(`The current state of the date is: ${this.state.startDate}`)
+            <DayPickerInput placeholder={`${formatDate(new Date(), "YYYY-MM-DD")}`} onDayChange={day => {
+              const newDate = formatDate(day,"YYYY-MM-DD")
+              this.setState({endDate: newDate})  
               }} />
 
             <Input type="submit" placeholder="Submit" onClick={this.handleFormSubmit} />
