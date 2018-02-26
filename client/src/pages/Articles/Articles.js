@@ -82,20 +82,22 @@ class Article extends Component {
     return <div>
         <Nav />
         <div>
-          <Modal header="Modal Header" fixedFooter trigger={<Button>
-                MODAL
-              </Button>}>
+          <Modal header="Modal Header" fixedFooter trigger={<Row>
+                <Col s={5} m={5} />
+                <div class="modalForSearch">
+                  <Button>Search For Articles</Button>
+                </div>
+              </Row>}>
             <Input type="text" placeholder="Search" name="topic" value={this.state.topic} onChange={this.handleInputChange} />
             <p>Please pick the Start Date for your Search:</p>
             <DayPickerInput onDayChange={day => {
-                    const formatEnd = formatDate(day, "YYYY-MM-DD");
-                     this.setState({ startDate: formatEnd });  
-              
+                const formatEnd = formatDate(day, "YYYY-MM-DD");
+                this.setState({ startDate: formatEnd });
               }} />
             <p>Please pick the Start Date for your Search:</p>
-            <DayPickerInput placeholder={`${formatDate(new Date(), "YYYY-MM-DD")}`} onDayChange={day => {
-              const newDate = formatDate(day,"YYYY-MM-DD")
-              this.setState({endDate: newDate})  
+            <DayPickerInput placeholder={`${formatDate(new Date(), "YYYY-MM-DD")}`} todayButton="Go To Today" onDayChange={day => {
+                const newDate = formatDate(day, "YYYY-MM-DD");
+                this.setState({ endDate: newDate });
               }} />
 
             <Input type="submit" placeholder="Submit" onClick={this.handleFormSubmit} />

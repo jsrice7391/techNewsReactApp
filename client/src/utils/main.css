@@ -25,6 +25,11 @@
 .boxForDesc {
     padding: 15px;
     margin-bottom: 50px;
-    
+}
 
+.modalForSearch {
+    margin-top: 40px;
+    text-align: center;
+    padding: 50px;
+    
 }
