@@ -85,7 +85,7 @@ class Article extends Component {
                   <Button>Search For Articles</Button>
                 </div>
               </Row>}>
-              {/* This is the input for the keyword for the user */}
+            {/* This is the input for the keyword for the user */}
             <Input type="text" placeholder="Search" name="topic" value={this.state.topic} onChange={this.handleInputChange} />
 
             {/* This is the input for the source they would like to search */}
@@ -93,8 +93,8 @@ class Article extends Component {
               <option value="wired">Wired</option>
               <option value="techcrunch">Tech Crunch</option>
               <option value="bloomberg">Bloomberg</option>
+              <option value="the-verge">The Verge</option>
             </Input>
-
 
             <p>How far back would you like to search?</p>
             <DayPickerInput onDayChange={day => {
