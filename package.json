@@ -24,7 +24,7 @@
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
     "mongoose": "^4.11.7",
-    "newsapi": "^2.2.0",
+    "newsapi": "^2.2.1",
     "request": "^2.83.0"
   }
 }
