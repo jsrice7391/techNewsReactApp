@@ -25,6 +25,6 @@
     "express": "^4.15.4",
     "mongoose": "^4.11.7",
     "newsapi": "^2.2.0",
-    "request": "^2.83.0"
+    "request": "^2.88.2"
   }
 }
