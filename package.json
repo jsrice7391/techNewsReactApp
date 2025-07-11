@@ -10,7 +10,9 @@
     "build": "node scripts/build.js",
     "seed": "node scripts/seedDB.js",
     "test": "jest",
-    "installDeps": "yarn && cd client && yarn"
+    "installDeps": "yarn && cd client && yarn",
+    "prepare": "npm run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "author": "Justin Rice",
   "license": "ISC",
@@ -20,11 +22,13 @@
     "nodemon": "^1.15.1"
   },
   "dependencies": {
-    "axios": "^0.16.2",
+    "axios": "^0.30.0",
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
-    "mongoose": "^4.11.7",
+    "mongoose": "^6.13.6",
     "newsapi": "^2.2.0",
-    "request": "^2.88.2"
-  }
+    "request": "^2.88.2",
+    "@snyk/protect": "latest"
+  },
+  "snyk": true
 }
